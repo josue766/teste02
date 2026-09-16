@@ -174,6 +174,12 @@ function initPublicProductForm() {
   const grid = document.querySelector('.fabrics-grid');
   const feedback = document.getElementById('public-product-feedback');
   if (!form || !grid || !feedback) return;
+  const supabaseClient = window.citSupabase;
+
+  if (!supabaseClient) {
+    feedback.textContent = 'Configure o Supabase para carregar o catalogo.';
+    return;
+  }
 
   const categoryNames = {
     moda: 'Moda & Vestuário',
@@ -211,10 +217,23 @@ function initPublicProductForm() {
     return card;
   };
 
-  let storedProducts = JSON.parse(localStorage.getItem('cit-public-products') || '[]');
-  storedProducts.forEach(product => grid.appendChild(createProductCard(product)));
+  const loadProducts = async () => {
+    const { data, error } = await supabaseClient
+      .from('products')
+      .select('name, category, grammage, composition, width, tag, description')
+      .order('created_at', { ascending: false });
 
-  form.addEventListener('submit', event => {
+    if (error) {
+      feedback.textContent = 'Nao foi possivel carregar os produtos.';
+      return;
+    }
+
+    data.forEach(product => grid.appendChild(createProductCard(product)));
+  };
+
+  loadProducts();
+
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     const product = {
       name: document.getElementById('product-name').value.trim(),
@@ -225,9 +244,19 @@ function initPublicProductForm() {
       tag: document.getElementById('product-tag').value.trim(),
       description: document.getElementById('product-description').value.trim()
     };
-    storedProducts = [...storedProducts, product];
-    localStorage.setItem('cit-public-products', JSON.stringify(storedProducts));
-    grid.appendChild(createProductCard(product));
+
+    const { data, error } = await supabaseClient
+      .from('products')
+      .insert(product)
+      .select('name, category, grammage, composition, width, tag, description')
+      .single();
+
+    if (error) {
+      feedback.textContent = 'Nao foi possivel publicar o produto.';
+      return;
+    }
+
+    grid.appendChild(createProductCard(data));
     feedback.textContent = 'Produto publicado no catálogo público.';
     form.reset();
   });
@@ -543,30 +572,48 @@ function initManagerLogin() {
   const logout = document.getElementById('manager-logout');
   if (!form || !loginCard || !dashboard || !feedback) return;
 
+  const supabaseClient = window.citSupabase;
+
   const showDashboard = () => {
     loginCard.hidden = true;
     dashboard.hidden = false;
   };
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.checkValidity()) {
       feedback.textContent = 'Informe um e-mail e uma senha válidos.';
       return;
     }
-    sessionStorage.setItem('cit-manager-session', 'active');
+
+    if (!supabaseClient) {
+      feedback.textContent = 'Configure o Supabase em js/supabase-config.js.';
+      return;
+    }
+
+    const email = document.getElementById('manager-email').value.trim();
+    const password = document.getElementById('manager-password').value;
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      feedback.textContent = 'E-mail ou senha incorretos.';
+      return;
+    }
+
     feedback.textContent = '';
     showDashboard();
   });
 
-  logout?.addEventListener('click', () => {
-    sessionStorage.removeItem('cit-manager-session');
+  logout?.addEventListener('click', async () => {
+    await supabaseClient?.auth.signOut();
     dashboard.hidden = true;
     loginCard.hidden = false;
     form.reset();
   });
 
-  if (sessionStorage.getItem('cit-manager-session') === 'active') showDashboard();
+  supabaseClient?.auth.getSession().then(({ data }) => {
+    if (data.session) showDashboard();
+  });
 }
 
 function initLiveFabricBoard() {

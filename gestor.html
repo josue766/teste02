@@ -57,7 +57,7 @@
             <button class="btn btn-primary" type="submit">Acessar painel</button>
             <p class="login-feedback" id="manager-login-feedback" role="alert"></p>
           </form>
-          <p class="login-disclaimer">A autenticação está em modo de demonstração local até a conexão com o Supabase.</p>
+          <p class="login-disclaimer">Acesso protegido pelo Supabase Auth.</p>
         </div>
 
         <div class="manager-dashboard" id="manager-dashboard" hidden>
@@ -107,6 +107,8 @@
       </div>
     </section>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
