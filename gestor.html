@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Gestor | CIT</title>
+  <meta name="description" content="Área do gestor CIT para acompanhar a produção de tecidos.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+  <header class="site-header scrolled" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="CIT Indústria Têxtil Home">
+        <img src="assets/logo.png" alt="CIT Indústria Têxtil" class="logo-img">
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação Principal">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="gestor.html" class="nav-link active">Perfil do Gestor</a>
+        <a href="tecnico.html" class="nav-link">Perfil Técnico</a>
+        <a href="processos.html" class="nav-link nav-badge-link">⚙️ Fases de Fabricação</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mobile-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-main">
+    <section class="profile-hero">
+      <div class="container profile-hero-content reveal-init">
+        <div class="section-tag">Área restrita de gestão</div>
+        <h1>Controle da <span class="highlight">produção CIT</span></h1>
+        <p>Acompanhe os lotes em andamento, os indicadores operacionais e as prioridades da fábrica em um só lugar.</p>
+      </div>
+    </section>
+
+    <section class="manager-access-section">
+      <div class="container">
+        <div class="manager-login-card" id="manager-login-card">
+          <div class="profile-card-heading">
+            <div class="manager-avatar" aria-hidden="true">G</div>
+            <div>
+              <div class="section-tag">Acesso do gestor</div>
+              <h2>Entrar no painel</h2>
+              <p>Use suas credenciais para visualizar o acompanhamento operacional.</p>
+            </div>
+          </div>
+          <form id="manager-login-form" class="manager-login-form">
+            <div class="form-group">
+              <label class="form-label" for="manager-email">E-mail corporativo</label>
+              <input class="form-control" id="manager-email" type="email" placeholder="gestor@empresa.com" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="manager-password">Senha</label>
+              <input class="form-control" id="manager-password" type="password" placeholder="Sua senha" autocomplete="current-password" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Acessar painel</button>
+            <p class="login-feedback" id="manager-login-feedback" role="alert"></p>
+          </form>
+          <p class="login-disclaimer">A autenticação está em modo de demonstração local até a conexão com o Supabase.</p>
+        </div>
+
+        <div class="manager-dashboard" id="manager-dashboard" hidden>
+          <div class="dashboard-heading">
+            <div>
+              <div class="section-tag">Visão geral</div>
+              <h2>Olá, gestor</h2>
+              <p>O painel acompanha três tecidos em produção simultaneamente.</p>
+            </div>
+            <button class="btn btn-outline-gold btn-sm" id="manager-logout" type="button">Sair</button>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="dashboard-stat"><span>Fluxos ativos</span><strong>03</strong></div>
+            <div class="dashboard-stat"><span>Em andamento</span><strong>02</strong></div>
+            <div class="dashboard-stat"><span>Última leitura</span><strong id="dashboard-clock">--:--:--</strong></div>
+          </div>
+
+          <div class="manager-tracker dashboard-tracker">
+            <div class="manager-tracker-header">
+              <div>
+                <div class="section-tag">Monitoramento ao vivo</div>
+                <h3>Produção simultânea</h3>
+                <p>Os indicadores abaixo são atualizados automaticamente nesta demonstração.</p>
+              </div>
+              <span class="manager-status"><span class="status-dot"></span> Fluxo ativo</span>
+            </div>
+            <div class="manager-live-board manager-live-board-dashboard" aria-label="Três tecidos em produção">
+              <article class="manager-fabric-live" data-live-progress="62">
+                <div class="manager-fabric-heading"><h4>Algodão Nobre Penteado</h4><span class="live-fabric-status">Em produção</span></div>
+                <div class="manager-fabric-progress"><span></span></div>
+                <div class="manager-fabric-footer"><span class="live-fabric-phase">Tecelagem</span><strong class="live-fabric-percent">62%</strong></div>
+              </article>
+              <article class="manager-fabric-live" data-live-progress="38">
+                <div class="manager-fabric-heading"><h4>Linho Puro &amp; Misto</h4><span class="live-fabric-status">Em produção</span></div>
+                <div class="manager-fabric-progress"><span></span></div>
+                <div class="manager-fabric-footer"><span class="live-fabric-phase">Tecelagem</span><strong class="live-fabric-percent">38%</strong></div>
+              </article>
+              <article class="manager-fabric-live" data-live-progress="81">
+                <div class="manager-fabric-heading"><h4>Brim &amp; Sarja Pesada</h4><span class="live-fabric-status">Em produção</span></div>
+                <div class="manager-fabric-progress"><span></span></div>
+                <div class="manager-fabric-footer"><span class="live-fabric-phase">Beneficiamento</span><strong class="live-fabric-percent">81%</strong></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

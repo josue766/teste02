@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil Técnico | CIT</title>
+  <meta name="description" content="Perfil técnico da CIT para controle de qualidade e acompanhamento das etapas industriais.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+  <header class="site-header scrolled" id="header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="CIT Indústria Têxtil Home">
+        <img src="assets/logo.png" alt="CIT Indústria Têxtil" class="logo-img">
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação Principal">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="gestor.html" class="nav-link">Perfil do Gestor</a>
+        <a href="tecnico.html" class="nav-link active">Perfil Técnico</a>
+        <a href="processos.html" class="nav-link nav-badge-link">⚙️ Fases de Fabricação</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mobile-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-main">
+    <section class="profile-hero technical-hero">
+      <div class="container profile-hero-content reveal-init">
+        <div class="section-tag">Operação e qualidade</div>
+        <h1>Perfil <span class="highlight">Técnico</span></h1>
+        <p>Leitura técnica do processo produtivo, dos parâmetros de qualidade e dos pontos críticos de inspeção da CIT.</p>
+      </div>
+    </section>
+
+    <section class="technical-profile-section">
+      <div class="container">
+        <div class="technical-grid">
+          <article class="technical-card reveal-init">
+            <span class="technical-card-icon">01</span>
+            <h2>Controle de processo</h2>
+            <p>Verifique densidade, gramatura e espessura desde a tecelagem até o acabamento final.</p>
+            <a href="processos.html#tabela-tecnica" class="btn btn-outline-gold btn-sm">Consultar parâmetros</a>
+          </article>
+          <article class="technical-card reveal-init">
+            <span class="technical-card-icon">02</span>
+            <h2>Qualidade do lote</h2>
+            <p>Registre inspeções, acompanhe a solidez da cor e sinalize desvios antes da expedição.</p>
+            <span class="technical-status"><span class="status-dot"></span> Inspeção disponível</span>
+          </article>
+          <article class="technical-card reveal-init">
+            <span class="technical-card-icon">03</span>
+            <h2>Segurança operacional</h2>
+            <p>Consulte os pontos de atenção da fábrica e mantenha cada etapa alinhada ao padrão técnico.</p>
+            <span class="technical-status"><span class="status-dot"></span> Operação monitorada</span>
+          </article>
+        </div>
+
+        <section class="technical-live-tracker reveal-init" aria-labelledby="technical-live-title">
+          <div class="technical-live-header">
+            <div>
+              <div class="section-tag">Monitoramento em tempo real</div>
+              <h2 id="technical-live-title">Fases de produção do tecido</h2>
+              <p>Acompanhe o percentual concluído de cada etapa do lote em produção.</p>
+            </div>
+            <span class="technical-live-label"><span class="status-dot"></span> Atualização ao vivo</span>
+          </div>
+          <div class="technical-phase-grid">
+            <article class="technical-phase-live" data-technical-progress="100">
+              <div class="technical-phase-heading"><span>01</span><strong>Matéria-prima</strong></div>
+              <div class="technical-phase-bar"><span></span></div>
+              <div class="technical-phase-footer"><small>Fibras e fiação</small><strong class="technical-phase-percent">100%</strong></div>
+            </article>
+            <article class="technical-phase-live" data-technical-progress="68">
+              <div class="technical-phase-heading"><span>02</span><strong>Tecelagem</strong></div>
+              <div class="technical-phase-bar"><span></span></div>
+              <div class="technical-phase-footer"><small>Formação do tecido</small><strong class="technical-phase-percent">68%</strong></div>
+            </article>
+            <article class="technical-phase-live" data-technical-progress="34">
+              <div class="technical-phase-heading"><span>03</span><strong>Beneficiamento</strong></div>
+              <div class="technical-phase-bar"><span></span></div>
+              <div class="technical-phase-footer"><small>Tinturaria e acabamento</small><strong class="technical-phase-percent">34%</strong></div>
+            </article>
+            <article class="technical-phase-live" data-technical-progress="0">
+              <div class="technical-phase-heading"><span>04</span><strong>Inspeção final</strong></div>
+              <div class="technical-phase-bar"><span></span></div>
+              <div class="technical-phase-footer"><small>Qualidade e expedição</small><strong class="technical-phase-percent">0%</strong></div>
+            </article>
+          </div>
+          <p class="technical-live-note">Demonstração local: conecte uma API para exibir dados reais da fábrica.</p>
+        </section>
+
+        <div class="technical-callout reveal-init">
+          <div>
+            <div class="section-tag">Fluxo completo</div>
+            <h2>Detalhamento das fases industriais</h2>
+            <p>Acesse a linha do tempo técnica para consultar cada etapa, requisito e controle do processo.</p>
+          </div>
+          <a href="processos.html" class="btn btn-primary">Abrir fases de fabricação</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
